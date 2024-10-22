@@ -8,10 +8,10 @@ import (
 
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
-	"go.mongodb.org/mongo-driver/v2/mongo"
+	"go.mongodb.org/mongo-driver/mongo"
 )
 
-func CreateEmployee(collection *mongo.Collection, employee models.Employee) error {
+func CreateEmployees(collection *mongo.Collection, employee models.Employee) error {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 
@@ -25,7 +25,7 @@ func CreateEmployee(collection *mongo.Collection, employee models.Employee) erro
 	return nil
 }
 
-func GetEmployee(collection *mongo.Collection) ([]models.Employee, error) {
+func GetEmployees(collection *mongo.Collection) ([]models.Employee, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 	cursor, err := collection.Find(ctx, bson.M{})
